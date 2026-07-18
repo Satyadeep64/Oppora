@@ -89,9 +89,9 @@ const Footer = () => {
 
         <div className="footer-bottom">
 
-            <div className="footer-logo">
-                Oppora
-            </div>
+            <h1>
+    <span className="logo7">O</span>PPORA
+</h1>
 
             <div>
                 © {new Date().getFullYear()} Oppora. All Rights Reserved.

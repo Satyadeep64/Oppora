@@ -21,9 +21,9 @@ const Navbar = () => {
   return (
     <nav className="navbar">
 
-    <div className="logo">
-        Oppora
-    </div>
+   <h1>
+    <span className="logo7">O</span>PPORA
+</h1>
 
     <div className="search-bar">
 

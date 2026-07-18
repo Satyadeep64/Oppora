@@ -23,6 +23,93 @@
    
 }
 .loginpic{
+
+    width:45%;
+    height:100%;
+
+    background:
+    linear-gradient(
+        rgba(37,99,235,0.65),
+        rgba(30,64,175,0.75)
+    ),
+    url("../images/login.webp");
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+
+}
+
+
+
+/* Top Left Logo */
+
+.brand{
+
+    position:absolute;
+
+    top:10px;
+
+    left:40px;
+
+    color:#2563eb
+
+}
+
+
+.brand h1{
+
+    font-size:40px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+color:black;
+    margin:0;
+
+}
+.logo-o{
+
+    color:#2563eb;
+
+}
+.brand p{
+
+    margin-top:8px;
+
+    font-size:15px;
+
+    opacity:.9;
+
+}
+.brand h1{
+
+animation:logoPop .8s ease;
+
+}
+
+
+@keyframes logoPop{
+
+from{
+
+transform:scale(.5);
+
+opacity:0;
+
+}
+
+to{
+
+transform:scale(1);
+
+opacity:1;
+
+}
+
+}
+.loginpic{
 border-radius:20px 50px 10px 70px ;
   height: auto;
   width: 400px;
@@ -162,11 +249,17 @@ label{
     left:0;
     z-index:1000;
 }
-.logo{
-    font-size: 28px;
+.logo7{
+    font-size: 50px;
     font-weight: 700;
-    color: #2563eb;
-    width: 180px;
+    color: #2762e2;
+    width: 200px;
+}
+.logo{
+    font-size: 5px;
+    font-weight: 700;
+    color: #2762e2;
+    width: 200px;
 }
 
 .search-bar{
@@ -178,7 +271,7 @@ label{
     border-radius: 30px;
     overflow: hidden;
     background: white;
-    margin-left: 100px;
+    margin-left: 200px;
 }
 .search-bar input{
     flex: 1;
@@ -1113,7 +1206,6 @@ box-shadow:0 5px 15px rgba(0,0,0,.06);
     margin-bottom:10px;
 
 }
-
 
 
 .internship{

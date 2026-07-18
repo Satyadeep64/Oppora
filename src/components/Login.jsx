@@ -8,7 +8,16 @@ const Login = () => {
     <div className="parent">
       <div className="box">
  
-        <div className="loginpic"></div>
+        <div className="loginpic">
+            <div className="brand">
+
+       <h1>
+    <span className="logo7">O</span>PPORA
+</h1>
+
+    </div>
+
+        </div>
         
         <div className="parentinput">
           <div className="input1">
