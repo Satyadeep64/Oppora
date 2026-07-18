@@ -50,10 +50,10 @@ return(
                 <FaUserTie/>
                 AI Mock Interview
             </NavLink>
-            <NavLink to="/100-days-code">
-                <FaCode/>
-                100 Days to Code
-            </NavLink>
+<a href="https://takeuforward.org/strivers-a2z-dsa-course/" target="_blank" rel="noopener noreferrer"
+>
+    <FaCode />
+    Striver DSA Sheet</a>
             <NavLink to="/courses">
                 <FaBook/>
                 Courses

@@ -1,4 +1,31 @@
 /* Full Screen */
+.splash{
+
+    height:100vh;
+    width:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:white;
+
+}
+
+
+.splash h1{
+
+    font-size:70px;
+    font-weight:800;
+
+}
+
+
+.splash span{
+
+    color:#2563eb;
+
+}
 
 .splash-screen{
 
