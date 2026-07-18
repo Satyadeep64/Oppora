@@ -40,7 +40,7 @@ return(
             </NavLink>
             <NavLink to="/mentorship">
                 <FaUserTie/>
-                Mentorship
+                AI Resume Analyzer
             </NavLink>
             <NavLink to="/mock-tests">
                 <FaClipboardCheck/>

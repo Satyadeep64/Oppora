@@ -1,6 +1,10 @@
 import googleLogo from "../../images/google.png";
 import microsoftLogo from "../../images/microsoft.png";
 import amazonLogo from "../../images/amazon.png";
+import EY from "../../images/EY_logo.webp"
+import BSC from "../../images/BombaySClogo.jpg"
+import TCS from "../../images/tcs-logo.webp"
+
 
 export const jobs = [
 
@@ -40,9 +44,9 @@ export const internships=[
 
     {
         id:1,
-        logo:googleLogo,
+        logo:EY,
         title:"Software Engineer Intern",
-        company:"",
+        company:"EY",
         location:"Bangalore",
         packageText:"₹80,000/month",
         type:"Internship"
@@ -50,9 +54,9 @@ export const internships=[
 
     {
         id:2,
-        logo:microsoftLogo,
-        title:"Frontend Intern",
-        company:"Microsoft",
+        logo:BSC,
+        title:"Assissant Manager",
+        company:"BombayCompany",
         location:"Hyderabad",
         packageText:"₹65,000/month",
         type:"Internship"
@@ -60,9 +64,9 @@ export const internships=[
 
     {
         id:3,
-        logo:amazonLogo,
-        title:"SDE Intern",
-        company:"Amazon",
+        logo:TCS,
+        title:"Product Manager",
+        company:"TCS",
         location:"Remote",
         packageText:"₹75,000/month",
         type:"Internship"

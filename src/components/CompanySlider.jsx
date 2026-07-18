@@ -1,8 +1,7 @@
-
+import amazon from "../images/Sliderpic/amazon.webp"
+import google from "../images/Sliderpic/Google.webp"
+import microsoft from "../images/Sliderpic/Microsoft.webp"
 import {
-    FaGoogle,
-    FaMicrosoft,
-    FaAmazon,
     FaApple,
     FaFacebook,
     FaLinkedin
@@ -15,17 +14,17 @@ const CompanySlider = () => {
 const companies = [
     {
         name:"Google",
-        icon:<FaGoogle/>,
+        img:google,
         color:"#4285F4"
     },
     {
         name:"Microsoft",
-        icon:<FaMicrosoft/>,
+        img:microsoft,
         color:"#00A4EF"
     },
     {
         name:"Amazon",
-        icon:<FaAmazon/>,
+        img:amazon,
         color:"#FF9900"
     },
     {
@@ -63,7 +62,19 @@ key={index}
 style={{color:company.color}}
 >
 
-{company.icon}
+{
+company.img ?
+
+<img 
+src={company.img}
+alt={company.name}
+/>
+
+:
+
+company.icon
+
+}
 
 <span>
 {company.name}
