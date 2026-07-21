@@ -41,7 +41,32 @@ const companies = [
         name:"Meta",
         icon:<FaFacebook/>,
         color:"#1877F2"
-    }
+    },
+// {
+//     name:"IBM",
+//     icon:<span>IBM</span>,
+//     color:"#1F70C1"
+// },
+// {
+//     name:"Adobe",
+//     icon:<SiAdobe/>,
+//     color:"#FF0000"
+// },
+// {
+//     name:"Deloitte",
+//     icon:<span>D</span>,
+//     color:"#86BC25"
+// },
+// {
+//     name:"Infosys",
+//     icon:<SiInfosys/>,
+//     color:"#007CC3"
+// },
+// {
+//     name:"TCS",
+//     icon:<SiTata/>,
+//     color:"#0066B3"
+// }
 ];
 
 

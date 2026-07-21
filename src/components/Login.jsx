@@ -4,6 +4,8 @@ const Login = () => {
 
   const [activeTab, setActiveTab] = useState("login");
 
+  const role = localStorage.getItem("userRole");
+
   return (
     <div className="parent">
       <div className="box">
@@ -21,15 +23,23 @@ const Login = () => {
         
         <div className="parentinput">
           <div className="input1">
-            <h2 id="id1">
-              Your Next Opportunity Starts Here
-            </h2>
+           <h2 id="id1">
+{ role === "Recruiter"?"Build Your Team With Oppora":"Your Next Opportunity Starts Here"}
+
+</h2>
           </div>
-          <h5 id="id2">
-            Log in to discover competitions, jobs, and internships built for you.
-          </h5>
+      <h5 id="id2">
+{
+role === "Recruiter"
+?
+"Login to post jobs and find talented candidates."
+:
+"Login to discover jobs, internships and opportunities."
+}
+</h5>
 
           <div className="userinput">
+             
             {/* Login Signup Buttons */}
             <div className="loginSignup">
 
@@ -46,6 +56,7 @@ const Login = () => {
                 Sign Up
               </button>
             </div>
+            
             {/* Login Form */}
             {
               activeTab === "login" && (
@@ -81,7 +92,7 @@ const Login = () => {
                     </a>
                  </div>
                   <div className="bt3">
-                    <button>
+                    <button >
                       Login
                     </button>
                   </div>
@@ -138,7 +149,7 @@ const Login = () => {
                     </a>
                  </div>
                   <div className="bt3">
-                    <button>
+                    <button >
                       Sign Up
                     </button>
                   </div>

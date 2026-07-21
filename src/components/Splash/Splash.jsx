@@ -26,7 +26,6 @@
 
 // export default SplashScreen;
 
-
 const SplashScreen = () => {
   return (
     <div className="splash-screen">
@@ -38,9 +37,7 @@ const SplashScreen = () => {
         <span className="rest-text">
           PPORA
         </span>
-
       </div>
-
       <p className="tagline">
          Unlock Your Next Opportunity
       </p>

@@ -19,14 +19,10 @@
     font-weight:800;
 
 }
-
-
 .splash span{
 
     color:#2563eb;
-
 }
-
 .splash-screen{
 
     position:fixed;
@@ -36,22 +32,13 @@
     flex-direction:column;
     justify-content:center;
     align-items:center;
-
     background:white;
-
-    overflow:hidden;
-
+   overflow:hidden;
     z-index:9999;
-
     animation:screenFade .8s forwards;
     animation-delay:2.6s;
-
 }
-
-
-
 /* Logo */
-
 .logo{
 
     display:flex;
