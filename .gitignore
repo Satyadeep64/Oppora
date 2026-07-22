@@ -1,96 +1,60 @@
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# ==========================
+# React / Node
+# ==========================
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-
-# React
 node_modules/
-dist/
-.env
-*.local
-
-# Logs
-logs/
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# VS Code
-.vscode/
-
-# Visual Studio
-.vs/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# .NET build files
-bin/
-obj/
-
-# Rider
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db
-
-
-//for React
-# Dependencies
-node_modules/
-
-# Production build
 dist/
 build/
 
-# Environment variables
+# Environment files
 .env
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
+# Vite cache
+.vite/
+
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 
-# Vite cache
-.vite/
 
-# Editor files
+# ==========================
+# ASP.NET Core
+# ==========================
+
+# Build output
+bin/
+obj/
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.csproj.user
+*.userosscache
+*.rsuser
+*.sln.docstates
+
+# Development settings (contains local secrets)
+appsettings.Development.json
+
+
+# ==========================
+# Editors
+# ==========================
+
 .vscode/
 .idea/
 
-# OS generated files
+
+# ==========================
+# OS Files
+# ==========================
+
 .DS_Store
 Thumbs.db
-
-# Temporary files
-*.tmp
-*.temp
