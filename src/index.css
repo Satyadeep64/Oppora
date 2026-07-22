@@ -20,7 +20,9 @@
     height: 650px;
     background-color:white ;
     overflow: hidden;
-   
+   #id2{
+  margin-top:8px;
+}
 }
 .loginpic{
 
@@ -240,10 +242,10 @@ label{
     box-sizing:border-box;
     display: flex;
     align-items: center;
-    padding: 0 40px;
     background: rgb(245, 245, 255);
     box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-
+    padding:15px 30px;
+gap:20px;
      position:fixed;
     top:0;
     left:0;
@@ -253,7 +255,7 @@ label{
     font-size: 50px;
     font-weight: 700;
     color: #2762e2;
-    width: 200px;
+    width: auto;
 }
 .logo{
     font-size: 5px;
@@ -263,15 +265,17 @@ label{
 }
 
 .search-bar{
-    width: 500px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    border: 1px solid #ddd;
-    border-radius: 30px;
-    overflow: hidden;
-    background: white;
-    margin-left: 200px;
+    flex:1;
+    max-width:600px;
+    min-width:350px;
+    height:48px;
+    display:flex;
+    align-items:center;
+    border:1px solid #ddd;
+    border-radius:30px;
+    overflow:hidden;
+    background:white;
+    margin-left:40px;
 }
 .search-bar input{
     flex: 1;
@@ -328,11 +332,11 @@ label{
 }
 
 .nav-right{
-    width: 180px;
-    margin-left:auto;
     display:flex;
     align-items:center;
-    gap:15px;
+    gap:10px;
+    margin-left:auto;
+    flex-shrink:0;
 }
 .logoutbtn{
     padding: 10px 22px;
@@ -346,6 +350,39 @@ label{
     transition: all 0.3s ease;
 
 
+}
+.nav-login,
+.nav-signup{
+  padding:8px 16px;
+border-radius:8px;
+font-size:14px;
+font-weight:600;
+cursor:pointer;
+white-space:nowrap;
+  transition:0.3s ease;
+}
+
+.nav-login{
+  background:transparent;
+  color:#2563eb;
+  border:1.5px solid #2563eb;
+}
+
+.nav-login:hover{
+  background:#2563eb;
+  color:white;
+}
+
+.nav-signup{
+  background:transparent;
+  color:#2563eb;
+  border:1.5px solid #2563eb;
+  margin-left:12px;
+}
+
+.nav-signup:hover{
+  background:#1d4ed8;
+  transform:translateY(-2px);
 }
 .logoutbtn:hover{
     background: #dc2626;
@@ -2113,4 +2150,52 @@ grid-template-columns:repeat(2,1fr);
     height:120px;
     background:#e5e7eb;
     bottom:-130px;
+}
+
+#id1{
+  height:45px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    white-space:nowrap;
+    overflow:hidden;
+    font-size:28px;
+    font-weight:700;
+    margin:30px 0 20px;
+}
+
+
+.gradient-text{
+  background:linear-gradient(
+    90deg,
+    #2563eb,
+    #9333ea,
+    #ec4899
+  );
+
+  -webkit-background-clip:text;
+  background-clip:text;
+
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+
+  display:inline-block;
+}
+
+.cursor{
+  margin-left:3px;
+  animation: blink 0.8s infinite;
+}
+
+
+@keyframes blink{
+
+0%,100%{
+opacity:1;
+}
+
+50%{
+opacity:0;
+}
+
 }

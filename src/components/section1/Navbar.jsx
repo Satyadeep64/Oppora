@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { FaSearch, FaUserCircle, FaBell, FaFilter } from "react-icons/fa";
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
-
+const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [showMenu, setShowMenu] = useState(false);
   const [showNotification, setShowNotification] = useState(false);
@@ -16,16 +16,19 @@ const Navbar = () => {
     "Search Courses..."
   ];
 
+
   const [placeholder, setPlaceholder] = useState("");
   const [index, setIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [deleting, setDeleting] = useState(false);
 
+const token = localStorage.getItem("token");
   useEffect(() => {
 
     const currentText = placeholders[index];
     const speed = deleting ? 50 : 100;
 
+    
     const timer = setTimeout(() => {
 
       if (!deleting) {
@@ -60,12 +63,25 @@ const Navbar = () => {
     console.log("Searching for:", search);
   };
 
+const handleLogout = () => {
 
+  localStorage.removeItem("token");
+  localStorage.removeItem("userRole");
+  localStorage.removeItem("userName");
+
+  setShowMenu(false);
+
+  navigate("/login");
+  };
+ const handleclick = () => {
+    navigate("/home");
+  };
+const isLoggedIn = !!localStorage.getItem("token");
   return (
     <nav className="navbar">
 
-      <h1>
-        <span className="logo7">O</span>PPORA
+      <h1 onClick={handleclick}>
+        <span className="logo7" >O</span>PPORA
       </h1>
 
       <div className="search-bar">
@@ -127,55 +143,66 @@ const Navbar = () => {
 
       </div>
 
-      <div className="nav-right">
+     <div className="nav-right">
+{
+!token ? (
+<>
+<button className="nav-login" onClick={()=>navigate("/login")}>
+Login
+</button>
+<button className="nav-signup" onClick={()=>navigate("/login")}>
+Sign Up
+</button>
+</>
+)
+:
+(
+<div className="notification">
+<button className="notification-btn" onClick={()=>setShowNotification(!showNotification)}>
+<FaBell />
+</button>
+{showNotification && (
+<div className="notification-box">
+<h4>Notifications</h4>
+<p>New internship available</p>
+<p>Your application was viewed</p>
+<p>Interview scheduled</p>
+</div>
+)}
+</div>
+)
+}
+       {isLoggedIn && (
+  <div className="profile">
+    <div
+      className="profile-icon"
+      onClick={() => setShowMenu(!showMenu)}
+    >
+      <FaUserCircle />
+    </div>
 
-        <div className="notification">
+    {showMenu && (
+      <div className="profile-menu">
+        <div>My Profile</div>
+        <div>My Courses</div>
+        <div>Saved Jobs</div>
+        <div>Settings</div>
+        <div onClick={handleLogout}>Logout</div>
+      </div>
+    )}
+  </div>
+)}
 
-          <button
-            className="notification-btn"
-            onClick={() => setShowNotification(!showNotification)}
-          >
-            <FaBell />
-          </button>
 
-          {showNotification && (
-            <div className="notification-box">
-              <h4>Notifications</h4>
-              <p>New internship available</p>
-              <p>Your application was viewed</p>
-              <p>Interview scheduled</p>
-            </div>
-          )}
 
-        </div>
-
-        <div className="profile">
-
-          <div
-            className="profile-icon"
-            onClick={() => setShowMenu(!showMenu)}
-          >
-            <FaUserCircle />
-          </div>
-
-          {showMenu && (
-            <div className="profile-menu">
-              <div>My Profile</div>
-              <div>My Courses</div>
-              <div>Saved Jobs</div>
-              <div>Settings</div>
-              <div>Logout</div>
-            </div>
-          )}
-
-        </div>
-
-        <div className="logout">
-          <button className="logoutbtn">
-            Logout
-          </button>
-        </div>
-
+       {isLoggedIn && (
+  <button
+    className="logoutbtn"
+    onClick={handleLogout}
+  >
+    Logout
+  </button>
+)}
       </div>
 
     </nav>

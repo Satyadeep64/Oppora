@@ -28,13 +28,14 @@ const App = () => {
   return(
     <Routes>
 
-      <Route path="/login" element={<Login/>}/>
+      <Route path="/login" element={<Login setLoading={setLoading}/>}/>
       <Route path="/"element={<RoleSelection/>}
+      
 />
 
       <Route element={<Layout/>}>
+      <Route path="/home" element={<Home/>}/>
 
-        <Route path="/home" element={<Home/>}/>
         <Route path="/footer" element={<Footer />}/>
 
       </Route>

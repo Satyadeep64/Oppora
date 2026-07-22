@@ -22,7 +22,7 @@ return(
             Post
         </button>
         <div className="menu">
-            <NavLink to="/">
+            <NavLink to="/home">
                 <FaHome/>
                 Home
             </NavLink>

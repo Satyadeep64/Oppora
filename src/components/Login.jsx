@@ -1,10 +1,168 @@
-import { useState } from "react";
+import { useState,useEffect} from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setLoading }) => {
 
   const [activeTab, setActiveTab] = useState("login");
+  const navigate = useNavigate();
 
   const role = localStorage.getItem("userRole");
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+
+
+
+
+const candidateTexts = [
+ "Your Next Opportunity Starts Here",
+ "Find Jobs & Internships Easily",
+ "Grow Your Career With Oppora"
+];
+
+
+const recruiterTexts = [
+ "Build Your Team With Oppora",
+ "Hire Top Talent Faster",
+ "Find The Best Candidates"
+];
+
+const texts = role === "Recruiter" ? recruiterTexts : candidateTexts;
+
+const [text,setText] = useState("");
+const [textIndex,setTextIndex] = useState(0);
+const [charIndex,setCharIndex] = useState(0);
+const [deleting,setDeleting] = useState(false);
+
+useEffect(()=>{
+
+  const currentText = texts[textIndex];
+
+  const timer = setTimeout(()=>{
+
+    if(!deleting){
+
+      setText(currentText.substring(0,charIndex+1));
+      setCharIndex(charIndex+1);
+
+      if(charIndex+1 === currentText.length){
+        setTimeout(()=>{
+          setDeleting(true);
+        },1000);
+      }
+
+    }else{
+
+      setText(currentText.substring(0,charIndex-1));
+      setCharIndex(charIndex-1);
+
+      if(charIndex===0){
+        setDeleting(false);
+        setTextIndex((textIndex+1)%texts.length);
+      }
+
+    }
+
+  },deleting ? 50 : 100);
+
+
+  return ()=>clearTimeout(timer);
+
+},[charIndex,deleting,textIndex]);
+
+  const handleRegister = async () => {
+    console.log("Register button clicked");
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5024/api/auth/register",
+        {
+          fullName,
+          email,
+          password,
+          role
+        }
+      );
+
+      alert("Registration Successful");
+      setActiveTab("login");
+
+    } catch (error) {
+      console.log(error);
+
+      if (error.response) {
+        console.log(error.response.data);
+        alert(JSON.stringify(error.response.data));
+      } else {
+        alert(error.message);
+      }
+    }
+  };
+
+  const handleLogin = async () => {
+
+    try {
+
+      const response = await axios.post(
+        "http://localhost:5024/api/auth/login",
+        {
+          email,
+          password
+        }
+      );
+
+      console.log(response.data);
+
+      localStorage.setItem(
+        "token",
+        response.data.token
+      );
+
+      localStorage.setItem(
+        "userRole",
+        response.data.role
+      );
+
+      localStorage.setItem(
+        "userName",
+        response.data.name
+      );
+
+      if (response.data.role === "Candidate") {
+
+        setLoading(true);
+
+        setTimeout(() => {
+          navigate("/home");
+          setLoading(false);
+        }, 2000);
+
+      } 
+      else if (response.data.role === "Recruiter") {
+
+        setLoading(true);
+
+        setTimeout(() => {
+          navigate("/home");
+          setLoading(false);
+        }, 2000);
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+      alert("Invalid Email or Password");
+
+    }
+
+  };
+
+
+
+
 
   return (
     <div className="parent">
@@ -23,9 +181,9 @@ const Login = () => {
         
         <div className="parentinput">
           <div className="input1">
-           <h2 id="id1">
-{ role === "Recruiter"?"Build Your Team With Oppora":"Your Next Opportunity Starts Here"}
-
+<h2 id="id1">
+<span className="gradient-text">{text}</span>
+<span className="cursor">|</span>
 </h2>
           </div>
       <h5 id="id2">
@@ -61,6 +219,8 @@ role === "Recruiter"
             {
               activeTab === "login" && (
 
+              <form onSubmit={(e)=>{e.preventDefault();handleLogin();}}>
+
                 <>
                   <div className="form-group">
                     <label htmlFor="email">
@@ -71,6 +231,8 @@ role === "Recruiter"
                       id="email"
                       placeholder="Enter Your Mail"
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                      value={email}
+                      onChange={(e)=>setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -83,6 +245,8 @@ role === "Recruiter"
                       type="password"
                       id="password"
                       placeholder="Enter your password"
+                      value={password}
+onChange={(e)=>setPassword(e.target.value)}
                       required
                     />
                   </div>
@@ -92,17 +256,19 @@ role === "Recruiter"
                     </a>
                  </div>
                   <div className="bt3">
-                    <button >
+                    <button type="submit">
                       Login
                     </button>
                   </div>
                 </>
+                </form>
               )
             }
             {/* Signup Form */}
 
             {
               activeTab === "signup" && (
+                <form onSubmit={(e)=>{e.preventDefault();handleRegister();}}>
                 <>
                   <div className="form-group">
 
@@ -114,6 +280,8 @@ role === "Recruiter"
                       type="text"
                       id="name"
                       placeholder="Enter Your Name"
+                      value={fullName}
+                      onChange={(e)=>setFullName(e.target.value)}
                       required
                     />
 
@@ -129,6 +297,8 @@ role === "Recruiter"
                       id="email"
                       placeholder="Enter Your Mail"
                       pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                      value={email}
+                      onChange={(e)=>setEmail(e.target.value)}
                       required
                     />
                   </div>
@@ -140,6 +310,8 @@ role === "Recruiter"
                       type="password"
                       id="password"
                       placeholder="Create Password"
+                      value={password}
+                       onChange={(e)=>setPassword(e.target.value)}
                       required
                     />
                   </div>
@@ -149,11 +321,12 @@ role === "Recruiter"
                     </a>
                  </div>
                   <div className="bt3">
-                    <button >
+                    <button type="submit">
                       Sign Up
                     </button>
                   </div>
                 </>
+                </form>
               )
             }
           </div>
@@ -161,7 +334,8 @@ role === "Recruiter"
       </div>
 </div>
   )
-}
+};
+
 
 
 export default Login;
